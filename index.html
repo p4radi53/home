@@ -1,8 +1,162 @@
-<html>
-  <head>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  </head>
-  <body>
-  <h1 x-data="{ message: 'Hello, world!' }" x-text="message"></h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal - Adam Raj</title>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+
+  <style>
+  @keyframes zoom {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }
+  .animate-zoom {
+    animation: zoom 10s ease-in-out infinite alternate;
+  }
+</style>
+</head>
+<body class="antialiased bg-gray-100">
+  <!-- Navigation Bar -->
+  <nav class="bg-white shadow" x-data="{ open: false }">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Logo/Brand -->
+        <div class="flex items-center">
+          <a href="#home" class="text-xl font-bold">Adam Raj</a>
+        </div>
+        <!-- Desktop Navigation -->
+        <div class="hidden sm:flex space-x-8 items-center">
+          <a href="#home" class="text-gray-700 hover:text-blue-500">Home</a>
+          <a href="#blog" class="text-gray-700 hover:text-blue-500">Blog</a>
+          <a href="#passions" class="text-gray-700 hover:text-blue-500">Passions</a>
+          <a href="#contact" class="text-gray-700 hover:text-blue-500">Contact</a>
+        </div>
+        <!-- Mobile menu button -->
+        <div class="flex items-center sm:hidden">
+          <button @click="open = !open" class="p-2 rounded-md focus:outline-none focus:ring">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Navigation Menu -->
+    <div class="sm:hidden" x-show="open" @click.away="open = false">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-200">Home</a>
+        <a href="#blog" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-200">Blog</a>
+        <a href="#passions" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-200">Passions</a>
+        <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-200">Contact</a>
+      </div>
+    </div>
+  </nav>
+<section id="home" class="relative min-h-screen flex items-center justify-center text-center py-20 overflow-hidden">
+  <!-- Background image container -->
+  <div class="absolute inset-0">
+    <img src="./tatry.jpg" alt="Background" class="object-cover w-full h-full animate-zoom">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+  </div>
+
+  <!-- Content container (positioned above the background) -->
+  <div class="relative z-10 max-w-2xl px-4 text-white">
+    <h1 class="text-4xl font-bold mb-4">Adam Raj</h1>
+    <h2 class="text-2xl font-semibold mb-6">
+      Big Data Engineer | Scalable & Cloud Data Architectures
+    </h2>
+    <p class="mb-6 text-lg">
+      Big Data Engineer with expertise in designing scalable data pipelines and optimizing cloud-based architectures.
+      Passionate about real-time data processing and analytics.
+    </p>
+    <div class="space-x-4">
+      <a href="https://www.linkedin.com/in/adam-raj-29a059180" target="_blank" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+        Let’s Connect
+      </a>
+    </div>
+  </div>
+</section>
+
+  <!---->
+  <!-- <!-- Blog / Technical Articles Section --> 
+  <!-- <section id="blog" class="py-20 bg-white"> -->
+  <!--   <div class="max-w-4xl mx-auto px-4"> -->
+  <!--     <h2 class="text-3xl font-bold text-center mb-12">Technical Articles</h2> -->
+  <!--     <div x-data="{ -->
+  <!--       posts: [ -->
+  <!--         { title: 'Optimizing Apache Spark for Large-Scale ETL', url: '#' }, -->
+  <!--         { title: 'Data Lake vs. Data Warehouse: When to Use What?', url: '#' }, -->
+  <!--         { title: 'How to Build a Streaming Pipeline with Kafka & Spark', url: '#' }, -->
+  <!--         { title: 'Scaling Airflow for Enterprise Workloads', url: '#' }, -->
+  <!--         { title: 'Best Practices for Cost Optimization in Cloud Data Engineering', url: '#' } -->
+  <!--       ] -->
+  <!--     }"> -->
+  <!--       <ul class="space-y-4"> -->
+  <!--         <template x-for="post in posts" :key="post.title"> -->
+  <!--           <li> -->
+  <!--             <a :href="post.url" class="text-xl text-blue-600 hover:underline" x-text="post.title"></a> -->
+  <!--           </li> -->
+  <!--         </template> -->
+  <!--       </ul> -->
+  <!--     </div> -->
+  <!--   </div> -->
+  <!-- </section> -->
+
+  <!-- <!-- My Passions (Photography & Music) Section -->
+  <!-- <section id="passions" class="py-20 bg-white"> -->
+  <!--   <div class="max-w-6xl mx-auto px-4"> -->
+  <!--     <h2 class="text-3xl font-bold text-center mb-12">My Passions</h2> -->
+  <!--     <div class="grid md:grid-cols-2 gap-12"> -->
+  <!--       <!-- Photography --> 
+  <!--       <div> -->
+  <!--         <h3 class="text-2xl font-semibold mb-4">Photography</h3> -->
+  <!--         <div class="grid grid-cols-3 gap-4"> -->
+  <!--           <!-- Placeholder images from Unsplash -->
+  <!--           <div> -->
+  <!--             <img src="https://source.unsplash.com/random/300x300?landscape" alt="Captured in Iceland, 2023" class="w-full h-auto rounded"> -->
+  <!--             <p class="text-sm mt-1">Captured in Iceland, 2023</p> -->
+  <!--           </div> -->
+  <!--           <div> -->
+  <!--             <img src="https://source.unsplash.com/random/300x300?city" alt="Golden Hour in NYC" class="w-full h-auto rounded"> -->
+  <!--             <p class="text-sm mt-1">Golden Hour in NYC</p> -->
+  <!--           </div> -->
+  <!--           <div> -->
+  <!--             <img src="https://source.unsplash.com/random/300x300?abstract" alt="Abstract" class="w-full h-auto rounded"> -->
+  <!--             <p class="text-sm mt-1">Abstract</p> -->
+  <!--           </div> -->
+  <!--         </div> -->
+  <!--       </div> -->
+  <!--       <!-- Music --> 
+  <!--       <div> -->
+  <!--         <h3 class="text-2xl font-semibold mb-4">Music</h3> -->
+  <!--         <div class="mb-6"> -->
+  <!--           <p class="mb-2">Listen to my favorite tracks or creations:</p> -->
+  <!--           <!-- Spotify Embed Example -->
+  <!--           <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> -->
+  <!--         </div> -->
+  <!--         <div> -->
+  <!--           <p class="mb-2">Or check out this inspiring video:</p> -->
+  <!--           <div class="aspect-video"> -->
+  <!--             <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" -->
+  <!--               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+  <!--           </div> -->
+  <!--         </div> -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </div> -->
+  <!-- </section> -->
+  <!-- Footer -->
+  <footer class="py-6 bg-white text-center">
+    <p class="text-gray-600">&copy; 2025 Adam Raj. All rights reserved.</p>
+  </footer>
+
+</body>
 </html>
+
